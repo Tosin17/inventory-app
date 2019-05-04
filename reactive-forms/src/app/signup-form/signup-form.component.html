@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+  <input type="text"
+         formControlName="username" />
+  <div *ngIf="username.touched && username.invalid">
+    This field is required
+  </div>
+</form>
