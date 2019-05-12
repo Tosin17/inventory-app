@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-device-item',
@@ -6,11 +6,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./device-item.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class DeviceItemComponent implements OnInit {
 
+export class DeviceItemComponent {
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

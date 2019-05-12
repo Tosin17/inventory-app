@@ -1,0 +1,8 @@
+.apps-wrapper {
+  list-style-type: none;
+}
+
+.apps-wrapper li {
+  margin-bottom: 0.5rem;
+}
+

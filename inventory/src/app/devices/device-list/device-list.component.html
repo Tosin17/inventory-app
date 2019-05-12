@@ -5,6 +5,7 @@
 </div>
 <hr>
 <div class="row">
-  <app-device-item></app-device-item>
-  <app-device-item></app-device-item>
+  <div *ngFor="let device of devices">
+    <app-device-item></app-device-item>
+  </div>
 </div>
