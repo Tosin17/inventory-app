@@ -1,1 +1,1 @@
-Inventory app for software and hardware work devices
+Inventory app for work related software and devices
