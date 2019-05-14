@@ -13,10 +13,10 @@ export class AppListComponent implements OnInit {
 
   ngOnInit() {
     this.apps = [
-      new AppModel('Outlook', '45'),
-      new AppModel('Hangouts', '23'),
-      new AppModel('Skype', '50'),
-      new AppModel('Webex', '203')
+      new AppModel('Outlook', 45),
+      new AppModel('Hangouts', 23),
+      new AppModel('Skype', 50),
+      new AppModel('Webex', 203)
     ]
   }
 }

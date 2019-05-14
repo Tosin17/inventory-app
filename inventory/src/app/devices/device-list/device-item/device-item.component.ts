@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { DeviceModel } from 'src/app/models/device.model';
 
 @Component({
   selector: 'app-device-item',
@@ -8,5 +9,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 
 export class DeviceItemComponent {
-  constructor() { }
+  @Input() device: DeviceModel;
 }

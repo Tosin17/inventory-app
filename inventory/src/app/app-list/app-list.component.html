@@ -4,7 +4,7 @@
     <hr>
     <ul class="list-group apps-wrapper">
       <li *ngFor="let app of apps">
-        <app-app-item></app-app-item>
+        <app-app-item [app]="app"></app-app-item>
       </li>
     </ul>
   </div>

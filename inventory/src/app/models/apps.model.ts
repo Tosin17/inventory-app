@@ -1,3 +1,3 @@
 export class AppModel {
-  constructor(public name: string, public noOfUsers: string) { };
+  constructor(public name: string, public noOfUsers: number) { };
 }
