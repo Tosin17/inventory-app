@@ -19,4 +19,8 @@ export class AppListComponent implements OnInit {
       new AppModel('Webex', 203)
     ]
   }
+
+  onAppEdit(app: AppModel) {
+    console.log(app);
+  }
 }

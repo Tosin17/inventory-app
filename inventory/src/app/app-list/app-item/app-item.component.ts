@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AppModel } from '../../models/apps.model';
 
 @Component({
@@ -9,4 +9,9 @@ import { AppModel } from '../../models/apps.model';
 
 export class AppItemComponent {
   @Input() app: AppModel;
+  @Output() onEdit = new EventEmitter<AppModel>();
+
+  onAppItemClicked() {
+    this.onEdit.emit(this.app);
+  }
 }
