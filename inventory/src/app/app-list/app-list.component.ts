@@ -9,7 +9,7 @@ import { AppModel } from '../models/apps.model';
 
 export class AppListComponent implements OnInit {
   apps: AppModel[];
-  constructor() { }
+  selectedApp: AppModel;
 
   ngOnInit() {
     this.apps = [
@@ -21,6 +21,6 @@ export class AppListComponent implements OnInit {
   }
 
   onAppEdit(app: AppModel) {
-    console.log(app);
+    this.selectedApp = app;
   }
 }

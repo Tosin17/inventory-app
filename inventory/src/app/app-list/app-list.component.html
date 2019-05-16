@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-10">
-    <app-edit-app-item></app-edit-app-item>
+    <app-edit-app-item [selectedApp]="selectedApp"></app-edit-app-item>
     <hr>
     <ul class="list-group apps-wrapper">
       <li *ngFor="let app of apps">
