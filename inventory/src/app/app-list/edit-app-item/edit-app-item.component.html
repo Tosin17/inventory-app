@@ -4,15 +4,25 @@
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
-          <input type="text"
-                 id="name"
-                 class="form-control">
+          <!-- <input type="text"
+                 [(ngModel)]="selectedApp.name"
+                 name="name"
+                 class="form-control"> -->
+                <input type="text"
+                 name="name"
+                 class="form-control"
+                 #appName>
         </div>
         <div class="col-sm-2 form-group">
           <label for="noOfUsers">Number of users</label>
-          <input type="number"
-                 id="noOfUsers"
-                 class="form-control">
+          <!-- <input type="number"
+                 [(ngModel)]="selectedApp.noOfUsers"
+                 name="noOfUsers"
+                 class="form-control"> -->
+                 <input type="number"
+                 name="noOfUsers"
+                 class="form-control"
+                 #noOfUsers>
         </div>
       </div>
       <div class="row">
