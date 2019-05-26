@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
+import { 
+  Component, 
+  Input, 
+  OnInit, 
+  OnChanges, 
+  ViewChild, 
+  ElementRef, 
+  SimpleChanges 
+} from '@angular/core';
 
 @Component({
   selector: 'app-edit-app-item',
@@ -13,8 +21,8 @@ export class EditAppItemComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
 
-  ngOnChanges() {
-    if (this.selectedApp) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.selectedApp && !changes.firstChange) {
       this.appName.nativeElement.value = this.selectedApp.name;
       this.noOfUsers.nativeElement.value = this.selectedApp.noOfUsers;
     }
