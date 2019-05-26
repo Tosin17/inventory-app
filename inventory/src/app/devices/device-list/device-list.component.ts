@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceModel } from '../../models/device.model';
+import { DevicesService } from '../devices.service';
+import { DeviceModel } from 'src/app/models/device.model';
 
 @Component({
   selector: 'app-device-list',
@@ -8,19 +9,11 @@ import { DeviceModel } from '../../models/device.model';
 })
 
 export class DeviceListComponent implements OnInit {
-  public devices: DeviceModel[];
-  constructor() { }
+  private devices: DeviceModel[];
+
+  constructor(private devicesService: DevicesService) { }
 
   ngOnInit() {
-    this.devices = [
-      new DeviceModel(
-        'Camera',
-        'A digital camera',
-        'https://cdn2.bigcommerce.com/server3300/f9fok/products/13867/images/23693/1517374264000_1387598__42567.1518541921.600.600.jpg?c=2'),
-      new DeviceModel(
-        'Shredder',
-        'A paper shredder',
-        'https://www.oreweb.ca/contents/media/l_destroyit-ideal-mbm-4002-cross-cut-paper-shredder.jpg')
-    ];
+    this.devices = this.devicesService.getDevices();
   }
 }
