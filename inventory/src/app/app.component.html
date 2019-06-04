@@ -1,5 +1,6 @@
-<app-header (showPage)="selectedPage = $event"></app-header>
+<app-header></app-header>
 <div class="container">
-  <app-devices *ngIf="selectedPage === 'devices'"></app-devices>
-  <app-app-list *ngIf="selectedPage === 'apps-list'"></app-app-list>
+  <router-outlet></router-outlet>
+  <!-- <app-devices *ngIf="selectedPage === 'devices'"></app-devices>
+  <app-app-list *ngIf="selectedPage === 'apps-list'"></app-app-list> -->
 </div>
