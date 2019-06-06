@@ -12,6 +12,7 @@ import { DeviceItemComponent } from './devices/device-list/device-item/device-it
 import { AppListComponent } from './app-list/app-list.component';
 import { AppItemComponent } from './app-list/app-item/app-item.component';
 import { EditAppItemComponent } from './app-list/edit-app-item/edit-app-item.component';
+import { NewDeviceComponent } from './new-device/new-device.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EditAppItemComponent } from './app-list/edit-app-item/edit-app-item.com
     DeviceItemComponent,
     AppListComponent,
     AppItemComponent,
-    EditAppItemComponent
+    EditAppItemComponent,
+    NewDeviceComponent
   ],
   imports: [
     BrowserModule,

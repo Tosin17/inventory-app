@@ -1,37 +1,36 @@
-<div class="row">
-  <div class="col-xs-12">
-    <img src=""
-         alt=""
-         class="img-responsive">
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <h1>Device Name</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="btn-group">
-      <button type="button"
-              class="btn btn-primary dropdown-toggle">
-        Manage Device <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a href="#">To Device List</a></li>
-        <li><a href="#">Edit Device</a></li>
-        <li><a href="#">Delete Device</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    Description
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    Ingredients
-  </div>
+<div class="col-md-7">
+    <div class="row">
+        <div class="col-xs-12">
+          <img [src]="deviceSelected?.image"
+               [alt]="deviceSelected?.desc"
+               class="img-responsive"
+               width="25%">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>{{ deviceSelected?.name }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="btn-group">
+            <button type="button"
+                    (click)="showDropdown = !showDropdown"
+                    class="btn btn-primary dropdown-toggle">
+              Manage Device <span class="caret"></span>
+            </button>
+            <ul *ngIf="showDropdown">
+              <li><a href="#">To Apps List</a></li>
+              <li><a href="#">Edit Device</a></li>
+              <li><a href="#">Delete Device</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          {{ deviceSelected?.desc }}
+        </div>
+      </div>
 </div>

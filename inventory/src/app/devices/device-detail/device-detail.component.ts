@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DeviceModel } from 'src/app/models/device.model';
 
 @Component({
   selector: 'app-device-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./device-detail.component.css']
 })
 export class DeviceDetailComponent implements OnInit {
+  @Input() deviceSelected: DeviceModel;
+  private showDropdown = false;
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DeviceModel } from 'src/app/models/device.model';
 import { DevicesService } from '../../devices.service';
 
