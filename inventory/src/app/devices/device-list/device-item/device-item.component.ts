@@ -10,10 +10,11 @@ import { DevicesService } from '../../devices.service';
 
 export class DeviceItemComponent {
   @Input() device: DeviceModel;
+  deviceRoute = ['device']
 
   constructor(private deviceService: DevicesService) {}
 
-  onSelected() {
-    this.deviceService.selectedDevice.emit(this.device);
-  }
+  // onSelected() {
+  //   this.deviceService.selectedDevice.emit(this.device);
+  // }
 }
