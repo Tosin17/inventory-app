@@ -13,6 +13,7 @@ import { AppListComponent } from './app-list/app-list.component';
 import { AppItemComponent } from './app-list/app-item/app-item.component';
 import { EditAppItemComponent } from './app-list/edit-app-item/edit-app-item.component';
 import { NewDeviceComponent } from './new-device/new-device.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NewDeviceComponent } from './new-device/new-device.component';
     AppListComponent,
     AppItemComponent,
     EditAppItemComponent,
-    NewDeviceComponent
+    NewDeviceComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
