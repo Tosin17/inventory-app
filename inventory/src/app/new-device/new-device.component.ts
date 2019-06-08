@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CanComponentDeactivate } from '../services/can-deactivate.service';
+import { NewDeviceService } from '../services/new-device.service';
 
 @Component({
   selector: 'app-new-device',
@@ -9,7 +10,15 @@ import { CanComponentDeactivate } from '../services/can-deactivate.service';
 export class NewDeviceComponent implements CanComponentDeactivate {
   private formChangesSaved: boolean = false;
 
+  constructor(private newDeviceService: NewDeviceService) {}
+
   saveDevice() {
+    this.newDeviceService
+    .addNewDevice({
+      name: 'Test', 
+      desc: 'Test desc', 
+      image: 'Test image url'
+    });
     this.formChangesSaved = true;
   }
 

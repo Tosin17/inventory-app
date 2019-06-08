@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DevicesService } from '../devices.service';
 import { DeviceModel } from 'src/app/models/device.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NewDeviceService } from 'src/app/services/new-device.service';
 
 @Component({
   selector: 'app-device-list',
@@ -14,7 +15,14 @@ export class DeviceListComponent implements OnInit {
 
   constructor(private devicesService: DevicesService, 
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private newDeviceService: NewDeviceService) { 
+
+      this.newDeviceService.newDevice.subscribe((device: DeviceModel) => {
+        this.devices.push(device);
+      })
+
+    }
 
   ngOnInit() {
     this.devices = this.devicesService.getDevices();
