@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DevicesService } from './devices.service';
 import { DeviceModel } from '../models/device.model';
 import { ImageService } from '../services/image.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.css']
 })
-export class DevicesComponent implements OnInit {
+
+export class DevicesComponent implements OnInit, OnDestroy {
   private selectedDevice: DeviceModel;
+  private subs: Subscription;
   constructor(private devicesService: DevicesService, private imageService: ImageService) { }
 
   ngOnInit() {
@@ -18,14 +21,17 @@ export class DevicesComponent implements OnInit {
       this.selectedDevice = device;
     })
 
-    const obs$ = this.imageService.getIntervals()
+    this.subs = this.imageService.getIntervals()
     .subscribe(data => {
       console.log(data);
 
-      if (data === 10) {
-        obs$.unsubscribe();
+      if (data === 5) {
+        this.subs.unsubscribe();
       }
     })
   }
 
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
 }
