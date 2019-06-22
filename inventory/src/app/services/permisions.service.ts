@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class Permissions implements CanActivate, CanActivateChild {
-    
+
     constructor(private authService: AuthService, private router: Router) {
         this.authService.canDo = true;
     }
@@ -15,10 +15,10 @@ export class Permissions implements CanActivate, CanActivateChild {
         return Observable.create(obs => {
             this.authService.auth$.subscribe(isAuth => {
                 if (isAuth) {
-                    obs.next(true);
+                    obs.next(isAuth);
                     obs.complete();
                 } else {
-                    this.router.navigate(['/']);                   
+                    this.router.navigate(['/']);
                 }
             })
         });
@@ -28,12 +28,12 @@ export class Permissions implements CanActivate, CanActivateChild {
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         return Observable.create(obs => {
             this.authService.auth$.subscribe((isAuth: boolean) => {
-               if (isAuth) {
-                   obs.next(isAuth);
-                   obs.complete();
-               } else {
-                   this.router.navigate(['/']);
-               }
+                if (isAuth) {
+                    obs.next(isAuth);
+                    obs.complete();
+                } else {
+                    this.router.navigate(['/']);
+                }
             });
         })
     }

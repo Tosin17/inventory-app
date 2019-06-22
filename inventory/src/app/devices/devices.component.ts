@@ -17,18 +17,18 @@ export class DevicesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.devicesService.selectedDevice
-    .subscribe((device: DeviceModel) => {
-      this.selectedDevice = device;
-    })
+      .subscribe((device: DeviceModel) => {
+        this.selectedDevice = device;
+      })
 
     this.subs = this.imageService.getIntervals()
-    .subscribe(data => {
-      console.log(data);
+      .subscribe(data => {
+        console.log(data);
 
-      if (data === 5) {
-        this.subs.unsubscribe();
-      }
-    })
+        if (data === 1) {
+          this.subs.unsubscribe();
+        }
+      })
   }
 
   ngOnDestroy() {

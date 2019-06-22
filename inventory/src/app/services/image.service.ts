@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class ImageService {
     private customObservable$ = Observable.create(obs => {
         let count = 1;

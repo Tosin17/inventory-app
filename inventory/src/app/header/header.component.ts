@@ -5,10 +5,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
   templateUrl: './header.component.html'
 })
 
-export class HeaderComponent { 
-  @Output() showPage = new EventEmitter<string>();
+export class HeaderComponent {
+  // @Output() showPage = new EventEmitter<string>();
 
-  selected(page: string) {
-    this.showPage.emit(page);
+  // selected(page: string) {
+  //   this.showPage.emit(page);
+  // }
+
+  logOut() {
+    console.log('logged out');
   }
 }

@@ -18,12 +18,12 @@ const routes: Routes = [
     canActivateChild: [Permissions],
     children: [
       {
-        path: 'device', 
+        path: 'device',
         component: DeviceDetailComponent
       },
       {
-        path: 'new-device', 
-        component: NewDeviceComponent, 
+        path: 'new-device',
+        component: NewDeviceComponent,
         canActivate: [Permissions],
         canDeactivate: [CanDeactivateService]
       }
@@ -39,4 +39,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

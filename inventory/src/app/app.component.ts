@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent { 
-  private selectedPage = this.selectedPage || 'devices';
+export class AppComponent {
+  private selectedPage: string = 'devices';
 }
