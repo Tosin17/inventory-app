@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService, AuthUserData } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,25 +9,44 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 
 export class HomeComponent implements OnInit {
-  private canLogin: boolean = false;
+  private isLoginMode: boolean = false;
   private form: FormGroup;
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    const { required, email } = Validators;
+    const { required, email, minLength } = Validators;
     this.form = new FormGroup({
       email: new FormControl('', [required, email]),
-      password: new FormControl('', required)
+      password: new FormControl('', [required, minLength(6)])
     })
   }
 
-  switchMode() {
-    this.canLogin = !this.canLogin;
+  switchMode(): void {
+    this.isLoginMode = !this.isLoginMode;
   }
 
-  onSubmit() {
-    console.log('Submitted!')
+  onSubmit(): void {
+    if (!this.form.valid) {
+      return;
+    }
+
+    if (this.isLoginMode) {
+
+    } else {
+      this.auth.signUpWithHttp(this.form.value.email, this.form.value.password)
+        .subscribe((data: AuthUserData) => {
+          console.log(data);
+          this.form.reset();
+        }, error => {
+          console.log(error);
+        })
+    }
+
+    // this.auth.signUp(this.form.value.email, this.form.value.password)
+    //   .subscribe(user => {
+    //     console.log(user)
+    //   })
   }
 
 }

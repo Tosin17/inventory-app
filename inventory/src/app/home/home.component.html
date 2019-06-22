@@ -5,24 +5,27 @@
         <label for="email">Email</label>
         <input type="email"
                id="email"
+               formControlName="email"
                class="form-control">
     </div>
     <div class="form-group">
         <label for="password">Password</label>
         <input type="password"
+               formControlName="password"
                id="password"
                class="form-control">
     </div>
     <div>
         <button class="btn btn-primary"
+                [disabled]="!form.valid"
                 type="submit">
-            {{ canLogin ? 'Sign In' : 'Sign Up'}}
+            {{ isLoginMode ? 'Sign In' : 'Sign Up'}}
         </button>
         &nbsp; | &nbsp;
         <button class="btn btn-default"
                 (click)="switchMode()"
                 type="button">
-            Switch to {{ canLogin ? 'Sign Up' : 'Sign In' }}
+            Switch to {{ isLoginMode ? 'Sign Up' : 'Sign In' }}
         </button>
     </div>
 </form>
