@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService, AuthUserData } from '../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -31,22 +32,20 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    if (this.isLoginMode) {
+    let obs$: Observable<AuthUserData>;
 
+    if (this.isLoginMode) {
+      obs$ = this.auth.signInWithHttp(this.form.value.email, this.form.value.password);
     } else {
-      this.auth.signUpWithHttp(this.form.value.email, this.form.value.password)
-        .subscribe((data: AuthUserData) => {
-          console.log(data);
-          this.form.reset();
-        }, error => {
-          console.log(error);
-        })
+      obs$ = this.auth.signUpWithHttp(this.form.value.email, this.form.value.password);
     }
 
-    // this.auth.signUp(this.form.value.email, this.form.value.password)
-    //   .subscribe(user => {
-    //     console.log(user)
-    //   })
+    obs$.subscribe((data: AuthUserData) => {
+      console.log(data);
+      this.form.reset();
+    }, error => {
+      console.error(error);
+    })
   }
 
 }
