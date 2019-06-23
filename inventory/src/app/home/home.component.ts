@@ -12,6 +12,15 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   private isLoginMode: boolean = false;
   private form: FormGroup;
+  private handleResponse: any = {
+    next: (data: AuthUserData) => {
+      console.log(data);
+      this.form.reset();
+    },
+    error: error => {
+      console.error(error);
+    }
+  };
 
   constructor(private auth: AuthService) { }
 
@@ -40,12 +49,7 @@ export class HomeComponent implements OnInit {
       obs$ = this.auth.signUpWithHttp(this.form.value.email, this.form.value.password);
     }
 
-    obs$.subscribe((data: AuthUserData) => {
-      console.log(data);
-      this.form.reset();
-    }, error => {
-      console.error(error);
-    })
+    obs$.subscribe(this.handleResponse);
   }
 
 }

@@ -42,36 +42,28 @@ export class AuthService {
         })
     }
 
+    private handleError(errRes) {
+        let msg = 'Sorry, we encountered a server error';
+        if (!errRes.error.error) {
+            return throwError(msg)
+        }
+
+        switch (errRes.error.error.message) {
+            case 'EMAIL_EXISTS':
+                return throwError('This email already exists');
+            case 'EMAIL_NOT_FOUND':
+                return throwError('This email does not exist');
+        }
+    }
+
     signInWithHttp(email, password): Observable<AuthUserData> {
         return this.http.post<AuthUserData>(signInUrl, { email, password })
-            .pipe(
-                catchError(errRes => {
-                    if (!errRes.error.error) {
-                        return throwError('Sorry, we encountered a server error');
-                    }
-                    switch (errRes.error.error.message) {
-                        case 'EMAIL_NOT_FOUND':
-                            return throwError('This email does not exist');
-                    }
-                })
-            )
+            .pipe(catchError(this.handleError));
     }
 
     signUpWithHttp(email, password): Observable<AuthUserData> {
         return this.http.post<AuthUserData>(signUpUrl, { email, password })
-            .pipe(
-                catchError(errRes => {
-                    let msg = 'Sorry, we encountered a server error';
-                    if (!errRes.error.error) {
-                        return throwError(msg)
-                    }
-
-                    switch (errRes.error.error.message) {
-                        case 'EMAIL_EXISTS':
-                            return throwError('This email already exists');
-                    }
-                })
-            )
+            .pipe(catchError(this.handleError))
     }
 
     public get auth$() {
