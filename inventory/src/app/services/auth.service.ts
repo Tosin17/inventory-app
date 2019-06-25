@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError, Subject } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
 import { signInUrl, signUpUrl } from '../../environments/environment';
+
+import { User } from '../models/user.model';
 
 export interface AuthUserData {
     kind: string,
@@ -24,6 +26,8 @@ export class AuthService {
             obs.complete();
         }, 500);
     });
+
+    public user = new Subject<User>();
 
     constructor(private afAuth: AngularFireAuth, private http: HttpClient) { }
 
@@ -56,14 +60,33 @@ export class AuthService {
         }
     }
 
+    private handleAuth(res) {
+        const _user = new User(
+            res.idToken,
+            res.email,
+            res.idToken,
+            new Date().getTime() + parseInt(res.expiresIn) * 1000
+        )
+        this.user.next(_user);
+    }
+
     signInWithHttp(email, password): Observable<AuthUserData> {
-        return this.http.post<AuthUserData>(signInUrl, { email, password })
-            .pipe(catchError(this.handleError));
+        return this.http.post<AuthUserData>(signInUrl, {
+            email,
+            password,
+            returnSecureToken: true
+        }).pipe(
+            tap(res => this.handleAuth(res)),
+            catchError(this.handleError)
+        )
     }
 
     signUpWithHttp(email, password): Observable<AuthUserData> {
         return this.http.post<AuthUserData>(signUpUrl, { email, password })
-            .pipe(catchError(this.handleError))
+            .pipe(
+                tap(res => this.handleAuth(res)),
+                catchError(this.handleError)
+            )
     }
 
     public get auth$() {
