@@ -10,6 +10,9 @@
             [routerLinkActiveOptions]="{exact: true}">
           <a routerLink='/'>Home</a>
         </li>
+        <li routerLinkActive="active">
+          <a routerLink='/dashboard'>Dashboard</a>
+        </li>
         <li routerLinkActive="active"
             *ngIf="isAuthenticated">
           <a routerLink='/devices'>Devices</a>

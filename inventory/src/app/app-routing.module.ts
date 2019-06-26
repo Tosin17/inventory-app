@@ -7,10 +7,14 @@ import { NewDeviceComponent } from './new-device/new-device.component';
 import { HomeComponent } from './home/home.component';
 import { Permissions } from './services/permisions.service';
 import { CanDeactivateService } from './services/can-deactivate.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent
+  },
+  {
+    path: 'dashboard', component: DashboardComponent
   },
   {
     path: 'devices',
