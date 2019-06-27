@@ -132,5 +132,10 @@
       }
     }
   },
-  "defaultProject": "inventory"
+  "defaultProject": "inventory",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

@@ -1,5 +1,40 @@
 <div class="dashboard">
-  <chart [type]="type"
-         [data]="data"
-         [options]="options"></chart>
+  <div class="dashboard__forms"></div>
+  <div class="dashboard__charts">
+    <div class="dashboard__line-charts">
+      <div class="dashboard__line-chart-wrapper">
+        <chart [type]="type"
+               [data]="data"
+               [options]="lineOptions"
+               class="dashboard__line-chart">
+        </chart>
+      </div>
+      <div class="dashboard__line-chart-wrapper">
+        <chart [type]="type"
+               [data]="data"
+               [options]="lineOptions"
+               class="dashboard__line-chart">
+        </chart>
+      </div>
+      <div class="dashboard__line-chart-wrapper">
+        <chart [type]="type"
+               [data]="data"
+               [options]="lineOptions"
+               class="dashboard__line-chart">
+        </chart>
+      </div>
+    </div>
+    <div class="dashboard__bar-chart">
+      <div class="dashboard__bar-chart-wrapper">
+        <chart [type]="'bar'"
+               [data]="barData"
+               [options]="barOptions"
+               class="dashboard__bars">
+        </chart>
+      </div>
+      <div class="dashboard__bar-chart-info">
+
+      </div>
+    </div>
+  </div>
 </div>
