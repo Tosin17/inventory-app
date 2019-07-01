@@ -113,8 +113,6 @@ export class AuthService {
             )
     }
 
-
-
     logOut() {
         this.user.next(null);
         if (localStorage.getItem('user')) {
