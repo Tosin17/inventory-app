@@ -29,6 +29,10 @@ export class DevicesComponent implements OnInit, OnDestroy {
           this.subs.unsubscribe();
         }
       })
+
+    this.imageService.getImages().subscribe(data => {
+      console.log(data);
+    })
   }
 
   ngOnDestroy() {

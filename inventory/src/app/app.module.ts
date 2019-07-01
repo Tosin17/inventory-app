@@ -19,8 +19,9 @@ import { ImageService } from './services/image.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { firebaseConfig } from '../environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthInterceptorService } from './services/interceptor-service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ChartModule
   ],
   providers: [
-    ImageService
+    ImageService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
