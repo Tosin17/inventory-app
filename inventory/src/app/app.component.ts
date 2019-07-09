@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { ImageService } from './services/image.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,13 @@ import { AuthService } from './services/auth.service';
 })
 
 export class AppComponent implements OnInit {
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private imageService: ImageService) { }
 
   ngOnInit() {
     this.auth.autoLoginMaybe();
+    this.imageService.getLineData()
+      .subscribe(data => {
+        console.log(data);
+      })
   }
 }
