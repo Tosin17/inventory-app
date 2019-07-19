@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject, interval } from 'rxjs';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { imagesURL } from '../../environments/environment';
 import { AuthService } from './auth.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, mergeMap, take, filter, multicast, refCount, publish, share, publishLast, publishBehavior, publishReplay } from 'rxjs/operators';
 import * as moment from 'moment';
 
 interface exceptionSummary {
@@ -28,6 +28,8 @@ export class ImageService {
             count++;
         }, 1000)
     });
+
+    public rand = new Subject();
 
     constructor(
         private http: HttpClient,
@@ -109,6 +111,21 @@ export class ImageService {
         )
     }
 
+    logRandom() {
+        setTimeout(() => {
+            this.rand.next(Math.random() * 6 + 1);
+        }, 500);
+    }
+
+
+    startPoller() {
+        const getDataFromServer$ = interval(1000).pipe(
+            take(5),
+            publishReplay(),
+            refCount()
+        );
+        return getDataFromServer$;
+    }
 
 
     // getImages() {

@@ -22,6 +22,8 @@ import { firebaseConfig } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptorService } from './services/interceptor-service';
+import { ShortenTextPipe } from './custom-pipes/shorten.pipe';
+import { FilterPipe } from './custom-pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AuthInterceptorService } from './services/interceptor-service';
     EditAppItemComponent,
     NewDeviceComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    ShortenTextPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

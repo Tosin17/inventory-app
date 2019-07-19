@@ -12,23 +12,24 @@ import { NewDeviceService } from 'src/app/services/new-device.service';
 
 export class DeviceListComponent implements OnInit {
   private devices: DeviceModel[];
+  private deviceName: string;
 
-  constructor(private devicesService: DevicesService, 
+  constructor(private devicesService: DevicesService,
     private router: Router,
     private route: ActivatedRoute,
-    private newDeviceService: NewDeviceService) { 
+    private newDeviceService: NewDeviceService) {
 
-      this.newDeviceService.newDevice.subscribe((device: DeviceModel) => {
-        this.devices.push(device);
-      })
+    this.newDeviceService.newDevice.subscribe((device: DeviceModel) => {
+      this.devices.push(device);
+    })
 
-    }
+  }
 
   ngOnInit() {
     this.devices = this.devicesService.getDevices();
   }
 
   onNewDevice() {
-    this.router.navigate(['new-device'], {relativeTo: this.route, queryParamsHandling: 'preserve'})
+    this.router.navigate(['new-device'], { relativeTo: this.route, queryParamsHandling: 'preserve' })
   }
 }
