@@ -1,1 +1,2 @@
-# Inventory app for work related software and devices
+# Inventory App
+Managing work related software and devices
